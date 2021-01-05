@@ -22,12 +22,15 @@
 		{{ name }}
     </h1>
 
-    {# le nom game n'a pas d'importance #}
-{% for game,multi in games %}
-<h3>Nom du jeu: {{loop.index + 100}} {{ game }} </h3>
-<h5>Nombre de joueurs: {{ multi + 100}} </h5>
-    
+
+<ul>
+
+{% for i  in 0..10 %}
+    <li>Element: {{ i }}</li>
 {% endfor %}
+</ul>
+
+    
 
 
 
