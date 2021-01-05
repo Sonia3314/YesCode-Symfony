@@ -31,14 +31,17 @@ class HomeController extends AbstractController
         $michel->age = 58;
 
         $outkast = "JD3000";
-        $picture = "";
+        $picture = "https://www.rollingstone.com/wp-content/uploads/2019/12/andre-3000.jpg";
+        
         // Je file tout ça à ma vue pour l'afficher !
         return $this->render('home/index.html.twig', [
             'name' => 'Page d\'accueil',
             "article" => $article,
             "auteur"  => $author,
             "user"    => $michel,
-            "jeanDaniel" =>  $outkast
+            "jeanDaniel" =>  $outkast,
+            "image" => $picture
+
             
         ]);
     }
