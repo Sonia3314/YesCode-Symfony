@@ -15,7 +15,13 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         //ici on déclare un tableau
-        $games = ["Starcraft 2", "BF6", "Metro Exodus", "Tekken 5", "Crash Bash"];
+        $games = [
+            "Starcraft 2" => 8,
+            "BF6" => 128,
+            "Metro Exodus" => 1,
+            "Tekken 5" => 2,
+            "Crash Bash" => 4 
+        ];
 
 
         return $this->render('home/index.html.twig', [
