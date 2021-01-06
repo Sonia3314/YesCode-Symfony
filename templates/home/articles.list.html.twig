@@ -2,4 +2,15 @@
 
 {% block title %} Nos articles {% endblock %}
 
-{% block body %} <h2>Nos articles </h2> {% endblock %}
+{% block body %} 
+    <h2>Nos articles </h2>
+
+    {% if block("footer") %}
+    <p> Un footer de plus selon une condition vérifiée</p>
+    {% endif %}
+ {% endblock %}
+    
+{% block footer %}
+ <p>Je suis un footer différent </p>
+  {% endblock %}
+    
