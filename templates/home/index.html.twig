@@ -21,13 +21,27 @@
 	<h1>Hello
 		{{ name }}
     </h1>
+{# je crée des variables twig , rien dans le controller #}
 
-    {% set item = {"nom" : "Pomme", "forme": "ronde", "poids": 200, "couleur": "verte"} %}
-    <p>Name: {{ item.nom}} </p>
-    <p>Shape: {{ item.forme}} </p>
-    <p>Weight: {{ item.poids}} g. </p>
-    <p>Color: {{ item.couleur}} </p>
+{% set michel = {"name": "Michel", "age": 14}   %}	
+{% set zak = {"name": "zAK", "age": 33}   %}	
+{% set david = {"name": "daVID", "age": "trente"}   %}
+{% set users = {michel, zak, david} %}
+
+{# Cela me permet de simuler un comportement, et d'anticiper des cas de figure #}
+
+{# Je boucle sur mon tableau twig (users) comme un tableau venant du controller en php #}
+{% for user in users %}
+{# J'utilise un filtre pour être sûr que l'affichage soit TOUJOURS correct #}
+	<p>Name: {{user.name | title}}</p>
+{# Je m'occupe d'un cas d'usage #}
+	{% if user.age %}
+		<p>Age: {{user.age}}</p>
+		{% else %}
+			<p>Age : Undefined</p>
+	{% endif %}
+	<hr>
+	{% endfor %}
+
 </div>
-
-
 {% endblock %}
