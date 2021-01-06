@@ -16,16 +16,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
         ]);
     }
-    /**
-     * @Route("/articles", name="articles_list")
-     */
-    public function articlesList(): Response
-    {
-        
-        return $this->render('home/articles.list.html.twig', [
-            
-        ]);
-    }
+
 }
 
 
