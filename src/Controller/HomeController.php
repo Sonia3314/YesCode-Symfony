@@ -13,14 +13,7 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        
-
-
         return $this->render('home/index.html.twig', [
-            
-            
-
-
         ]);
     }
     /**
@@ -29,13 +22,13 @@ class HomeController extends AbstractController
     public function articlesList(): Response
     {
         
-
-
         return $this->render('home/articles.list.html.twig', [
             
-            
-
-
         ]);
     }
 }
+
+
+
+
+
