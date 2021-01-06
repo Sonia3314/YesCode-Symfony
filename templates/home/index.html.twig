@@ -4,6 +4,24 @@
 
 {% block body %}
 
+	    {% set article1 = {"title" : "symfony", "intro": "Symfony est un framework PHP complet", "author": "Fabien Potencier", "picture": "https://neo7.fr/wp-content/uploads/2018/01/symfony-logo.png"} %}
+		<p>Title: {{ article1.title}} </p>
+		<p>Intro: {{ article1.intro}} </p>
+		<p>Author: {{ article1.author}} </p>
+		<p>Picture: {{ article1.picture}} </p>
+
+		{% set article2 = {"title" : "angular", "intro": "Angular le framework de Google", "author": "Angus Lard", "picture": "https://angular.io/assets/images/logos/angular/angular.svg"} %}
+		<p>Title: {{ article2.title}} </p>
+		<p>Intro: {{ article2.intro}} </p>
+		<p>Author: {{ article2.author}}</p>
+		<p>Picture: {{ article2.picture}} </p>
+
+		{% set article3 = {"title" : "laravel", "intro": "Laravel est un framework PHP aussi", "author": "Lara Velle", "picture": "https://jf-blog.fr/wp-content/uploads/2018/07/laravel-logo.png"} %}
+		<p>Title: {{ article3.title}} </p>
+		<p>Intro: {{ article3.intro}} </p>
+		<p>Author: {{ article3.author}}</p>
+		<p>Picture: {{ article3.picture}} </p>
+
 <div class="container">
     <div class="jumbotron text-center my-5 shadow">
         <h1 class="display-4">Bienvenue sur YesCode !</h1>
@@ -16,51 +34,52 @@
     </div>
     <h2 class="text-center h1">Les derniers articles</h2>
     <div class="row">
+
         <div class="col-4">
             <div class="card bg-light my-5 shadow">
-                <h3 class="card-header">Symfony</h3>
-                <img height="350px"  src="https://neo7.fr/wp-content/uploads/2018/01/symfony-logo.png" alt="Card image">
+                <h3 class="card-header">{{article1.title | title }}</h3>
+                <img height="350px"  src={{article1.picture}} alt="Card image">
                 <div class="card-body">
-				<p class="card-text">Symfony est un framework PHP complet</p>
+				<p class="card-text">{{article1.intro}}</p>
 				<a href="#" class="btn btn-primary rounded">Lire la suite</a>
 				<div class="my-3">
-					<a href="#" class="card-link">Fabien Potencier</a>
+					<a href="#" class="card-link">{{article1.author}}</a>
 				</div>
                 </div>
                 <div class="card-footer text-muted">
-				Il y a 2 jours
+				Il y a 3 jours
                 </div>
             </div>
         </div>
         <div class="col-4">
             <div class="card bg-light my-5 shadow">
-                <h3 class="card-header">Angular</h3>
-                <img height="350px"  src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Card image">
+                <h3 class="card-header">{{article2.title | title}}</h3>
+                <img height="350px"  src={{article2.picture}} alt="Card image">
                 <div class="card-body">
-                <p class="card-text">Angular le framework de Google</p>
+                <p class="card-text">{{article2.intro}}</p>
                 <a href="#" class="btn btn-primary rounded">Lire la suite</a>
                 <div class="my-3">
-                    <a href="#" class="card-link">Angus Lard</a>
+                    <a href="#" class="card-link">{{article2.author}}</a>
                 </div>
                 </div>
                 <div class="card-footer text-muted">
-                Il y a 2 jours
+                Il y a 3 jours
                 </div>
             </div>
         </div>
         <div class="col-4">
             <div class="card bg-light my-5 shadow">
-                <h3 class="card-header">Laravel</h3>
-                <img height="350px"  src="https://jf-blog.fr/wp-content/uploads/2018/07/laravel-logo.png" alt="Card image">
+                <h3 class="card-header">{{article3.title | title}}</h3>
+                <img height="350px"  src={{article3.picture}} alt="Card image">
                 <div class="card-body">
-                <p class="card-text">Laravel est un framework PHP aussi</p>
+                <p class="card-text">{{article3.intro}}</p>
                 <a href="#" class="btn btn-primary rounded">Lire la suite</a>
                 <div class="my-3">
-                    <a href="#" class="card-link">Lara Velle</a>
+                    <a href="#" class="card-link">{{article3.author}}</a>
                 </div>
                 </div>
                 <div class="card-footer text-muted">
-                Il y a 2 jours
+                Il y a 3 jours
                 </div>
             </div>
         </div>

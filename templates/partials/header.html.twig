@@ -1,4 +1,10 @@
             <header>
+            {% set item = {"firstname" : "MiCHEL", "lastname": "DELpEcH", "role": "admin", "isConnected": true} %}
+            <p>First name: {{ item.firstname}} </p>
+            <p>Last name: {{ item.lastname}} </p>
+            <p>Role: {{ item.role}} </p>
+            <p>isConnected: {{ item.isConnected}} </p>
+
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<a class="navbar-brand" href="{{path("home_page")}}">
                     YesCode
@@ -23,10 +29,20 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
 						<li class="nav-item dropdown">
+                            {% if item.isConnected %}
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i>
-                                Sonia
+                                {{item.firstname | title}} {{item.lastname | title }}
                             </a>
+                            {% else %}
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-plus mr-2" > inscription</i>
+                            <i class="fa fa-sign-in-alt mr-2"> connexion</i>
+                                
+                            </a>   
+                            
+                            {% endif %}
+                            {% if item.isConnected %} 
 							<div class="dropdown-menu dropdown-menu-right">
 								<a class="dropdown-item" href="#">Mon Profil</a>
 								<a class="dropdown-item" href="#">Mes articles</a>
@@ -34,8 +50,18 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Déconnexion</a>
 							</div>
+                            {% else %}
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">Mon Profil</a>
+                                    <a class="dropdown-item" href="#">Mes articles</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Déconnexion</a>
+							    </div>
+                                
+                            {% endif %}
 						</li>
 					</ul>
 				</div>
 			</nav>
 		</header>
+                            
