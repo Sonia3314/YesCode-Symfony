@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} Accueil {% endblock %}
-{% block body %} <h2>Page d'accueil</h2> {% endblock %}
 
-{% block bidule %}
+{% block body %} <h2>Page d'accueil</h2>
+    <a href="{{ path("articles_list") }}">
+    Vers les articles
+    </a>
 
-<p>Je suis sur la page d'accueil - Je suis  Bidule</p>
 {% endblock %}
- 

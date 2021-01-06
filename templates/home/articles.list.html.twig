@@ -4,13 +4,12 @@
 
 {% block body %} 
     <h2>Nos articles </h2>
+    <a href="{{ path("home_page") }}">
+    Vers page d'accueil
+    </a>
 
-    {% if block("footer") %}
-    <p> Un footer de plus selon une condition vérifiée</p>
-    {% endif %}
- {% endblock %}
+
+{% endblock %}
     
-{% block footer %}
- <p>Je suis un footer différent </p>
-  {% endblock %}
+
     
