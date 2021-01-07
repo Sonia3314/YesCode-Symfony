@@ -1,67 +1,62 @@
-            <header>
-            {% set item = {"firstname" : "MiCHEL", "lastname": "DELpEcH", "role": "admin", "isConnected": true} %}
-            <p>First name: {{ item.firstname}} </p>
-            <p>Last name: {{ item.lastname}} </p>
-            <p>Role: {{ item.role}} </p>
-            <p>isConnected: {{ item.isConnected}} </p>
+{% set user = {"firstname" : "MiCHEL", "lastname": "DELpEcH", "role": "admin", "isConnected": true} %}
+<header>
 
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<a class="navbar-brand" href="{{path("home_page")}}">
-                    YesCode
-                </a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarColor01">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="{{path("home_page")}}">
-                                <i class="fa fa-home"></i>
-                                Accueil
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-                                <i class="fa fa-newspaper"></i>
-                                Articles
-							</a>
-						</li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-						<li class="nav-item dropdown">
-                            {% if item.isConnected %}
-							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user"></i>
-                                {{item.firstname | title}} {{item.lastname | title }}
-                            </a>
-                            {% else %}
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user-plus mr-2" > inscription</i>
-                            <i class="fa fa-sign-in-alt mr-2"> connexion</i>
-                                
-                            </a>   
-                            
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="{{path("home_page")}}">
+			YesCode
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="{{path("home_page")}}">
+						<i class="fa fa-home"></i>
+						Accueil
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i class="fa fa-newspaper"></i>
+						Articles
+					</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				{% if user.isConnected %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-user"></i>
+							{{user.firstname | title }}
+							{{user.lastname | title }}
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="#">Mon Profil</a>
+							<a class="dropdown-item" href="#">Mes articles</a>
+                            {% if user.role == "admin" %}
+							<a class="dropdown-item" href="#">Espace Admin</a>
                             {% endif %}
-                            {% if item.isConnected %} 
-							<div class="dropdown-menu dropdown-menu-right">
-								<a class="dropdown-item" href="#">Mon Profil</a>
-								<a class="dropdown-item" href="#">Mes articles</a>
-								<a class="dropdown-item" href="#">Espace Admin</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Déconnexion</a>
-							</div>
-                            {% else %}
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Mon Profil</a>
-                                    <a class="dropdown-item" href="#">Mes articles</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Déconnexion</a>
-							    </div>
-                                
-                            {% endif %}
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</header>
-                            
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Déconnexion</a>
+						</div>
+					</li>
+				{% else %}
+					<li>
+						<a class="nav-link" href="#">
+							<i class="fa fa-user-plus mr-2">
+								inscription</i>
+						</a>
+					</li>
+					<li>
+						<a class="nav-link" href="#">
+							<i class="fa fa-sign-in-alt mr-2">
+								connexion</i>
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+</header>
+
