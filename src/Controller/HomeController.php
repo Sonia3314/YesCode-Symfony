@@ -28,9 +28,11 @@ class HomeController extends AbstractController
 
         $title = "La théorie des cordes à Linges Gravitationnelles";
 
-        $slug = $slugify->slugify($article->getTitle());
+        $slug = $slugify->slugify($article->getTitle().time() . hash("sha1", $article->getIntro()));
 
-        dump($article);
+        dump($slug);
+
+        // dump($article);
 
         $faker = Faker\Factory::create('fr_FR');
 
