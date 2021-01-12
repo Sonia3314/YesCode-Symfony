@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-
+use Faker;
 use App\Entity\Article;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -11,25 +11,32 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        for ($i=0; $i <= 10 ; $i++) { 
+        $faker = Faker\Factory::create('fr_FR');
 
+        // GESTION DES ARTICLES
+        for ($i=0; $i <=20 ; $i++) { 
+            
             $article = new Article();
-            $article->setTitle("Article n° ". $i);
+            
+            $title = $faker->sentence(2);
 
-            $article->setIntro('ceci est une super intro');
+            $image = "https://picsum.photos/400/300";
 
-            $article->setContent('<p>Blablabla 1
-            </p><p>Blablabla 2</p>
-            <p>Blablabla 3</p>');
+            $intro = $faker->paragraph(2);
 
-            $article->setImage("https://media.cdnws.com/_i/85346/285/2264/87/blog.jpeg");
-            $article->setCreatedAt(new \DateTime());
+            $content = '<p>' . implode('</p><p>',$faker->paragraphs(5)) . '</p>';
+
+            $createdAt = $faker->dateTimeBetween('- 1 months');
+
+            $article->setTitle($title)
+                    ->setImage($image)
+                    ->setIntro($intro)
+                    ->setContent($content)
+                    ->setCreatedAt($createdAt);
+
             $manager->persist($article);
+            }
 
-
-
-        } 
         $manager->flush();
     }
 }
-
