@@ -19,14 +19,18 @@ class HomeController extends AbstractController
     {    
         
         $articles = $repo->findLastArticles(3);
+
+        $article = $repo->findOneById(14);
+
+        $article = $repo->findOneByIntro("Porro ea id nam dolores id quia. Eveniet sit non quisquam fugit. Dolor a voluptates mollitia est non ex cupiditate quod.");
         
         $slugify = new Slugify();
 
         $title = "La théorie des cordes à Linges Gravitationnelles";
 
-        $slug = $slugify->slugify($title);
+        $slug = $slugify->slugify($article->getTitle());
 
-        dump($slug);
+        dump($article);
 
         $faker = Faker\Factory::create('fr_FR');
 
