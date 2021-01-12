@@ -19,6 +19,23 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+
+    /**
+     * Récupère les n derniers articles
+     *
+     * @param [integer] $nombre: le nombre d'articles à afficher
+     * @return array renvoie un tableau d'articles depuis la BDD 
+     */
+    public function findLastArticles($nombre)
+    {
+        return $this->createQueryBuilder('a')
+
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults($nombre)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */
