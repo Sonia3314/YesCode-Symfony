@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Controller;
 
 use Faker;
+use Cocur\Slugify\Slugify;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 class HomeController extends AbstractController
 {
@@ -13,31 +16,38 @@ class HomeController extends AbstractController
      * @Route("/", name="home_page")
      */
     public function index(ArticleRepository $repo): Response
-    {
+    {    
         
-        $articles = $repo->findLastArticles(7);
+        $articles = $repo->findLastArticles(3);
+        
+        $slugify = new Slugify();
+
+        $title = "La théorie des cordes à Linges Gravitationnelles";
+
+        $slug = $slugify->slugify($title);
+
+        dump($slug);
+
         $faker = Faker\Factory::create('fr_FR');
+
         // $title = $faker->sentence(2);
-        // $intro = $faker-> paragraph(2);
 
-        // $contenu = ["pomme","poire","figue","grenade","fraise"];
+        // $intro = $faker->paragraph(2);
 
+        // $contenu = ["pomme", "poire", "figue", "grenade", "test"];
 
+        $content = "<p>" . implode("</p><p>" , $faker->paragraphs(7) ) . "</p>";
 
-        $content = '<p>' . implode('</p><p>' , $faker->paragraphs(7) ) . '</p>'; 
-        $createdAt = $faker->dateTimeBetween('- 3 months');
+        $createdAt =  $faker->dateTimeBetween('- 3 months') ;
 
-        dump($createdAt);
-        dump($faker->paragraphs(7));// renvoie un array de 7 paragraphes
+        dump( $createdAt );
 
         $image = "https://picsum.photos/400/300";
-
+        
         return $this->render('home/index.html.twig', [
-        "articles"=> $articles,
-        "image" => $image,
-        "content" => $content
-
+            "articles" => $articles,
+            "image" => $image,
+            "content" => $content
         ]);
-
     }
 }
