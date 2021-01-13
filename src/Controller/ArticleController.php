@@ -2,10 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
 {
@@ -22,11 +26,18 @@ class ArticleController extends AbstractController
     /**
      * @Route("/articles/new", name="article_create")
      */
-    public function create()
+    public function create(Request $request)
     {   
+        $article = new Article();
+
+        $form = $this->createForm(ArticleType::class, $article);
+
+        $form->handleRequest($request);
+
+        dump($article);
 
         return $this->render('article/create.html.twig', [
-
+            'form' => $form->createView()
         ]);
     }
 
