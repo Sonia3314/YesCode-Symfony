@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +26,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/articles/new", name="article_create")
      */
-    public function create(Request $request)
+    public function create(Request $request, EntityManagerInterface $manager)
     {   
         $article = new Article();
 
@@ -34,7 +34,14 @@ class ArticleController extends AbstractController
 
         $form->handleRequest($request);
 
-        dump($article);
+        if ($form->isSubmitted() && $form->isValid()){
+            $manager->persist($article);
+            $manager->flush();
+            return $this->redirectToRoute('article_show', [
+                'slug' => $article->getSlug()
+            ]);
+
+        }
 
         return $this->render('article/create.html.twig', [
             'form' => $form->createView()
