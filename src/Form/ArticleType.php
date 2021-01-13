@@ -16,8 +16,6 @@ class ArticleType extends AbstractType
             ->add('intro')
             ->add('content')
             ->add('Image')
-            ->add('createdAt')
-            ->add('slug')
         ;
     }
 
