@@ -20,7 +20,7 @@ class ArticleController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/articles/{slug}", name="article_show")
      */
     public function show($slug, ArticleRepository $repo): Response
