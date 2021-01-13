@@ -41,7 +41,7 @@ class ArticleController extends AbstractController
             $this->addFlash(
 
                 'info',
-                "L\'article <strong>{$article->getTitle()}</strong> a bien été créé  !");
+                "L'article <strong>{$article->getTitle()}</strong> a bien été créé  !");
             
 
             return $this->redirectToRoute('article_show', [
