@@ -37,6 +37,13 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $manager->persist($article);
             $manager->flush();
+
+            $this->addFlash(
+
+                'info',
+                "L\'article <strong>{$article->getTitle()}</strong> a bien été créé  !");
+            
+
             return $this->redirectToRoute('article_show', [
                 'slug' => $article->getSlug()
             ]);
