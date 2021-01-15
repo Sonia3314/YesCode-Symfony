@@ -27,7 +27,7 @@
         </li>
       </ul>
 
-      {% set user = {"firstname":"Sonia", "lastname": "B", "role": "admin" , 'isConnected': true} %}
+      {% set user = {"firstname":"Sonia", "lastname": "B", "role": "admin" , 'isConnected': false} %}
 
       <ul class="navbar-nav ml-auto">
         {% if user.isConnected %}
@@ -52,7 +52,7 @@
             </li>
             {% else %}
             <li class="nav-item mx-3">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="{{ path('account_create') }}">
                 <i class="fas fa-user-plus mx-2"></i>
                 inscription
               </a>
