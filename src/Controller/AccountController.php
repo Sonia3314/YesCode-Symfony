@@ -23,6 +23,15 @@ class AccountController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/login", name="account_login")
+     */
+    public function login()
+    {
+        return $this->render('account/login.html.twig', [
+        ]);
+    }
+
 
     /**
      * @Route("/account/new", name="account_create")
