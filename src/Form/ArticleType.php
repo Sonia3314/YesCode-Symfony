@@ -18,18 +18,22 @@ class ArticleType extends AbstractType
         $builder
             ->add('title', TextType::class , [
             'label' => 'Titre de votre article',
+            'required' =>false,
             'attr' =>  ['placeholder' => 'Tapez votre titre ici ']
                 ])
             ->add('intro', TextType::class , [
                 'label' => 'Intro de votre article',
-                'attr' =>  ['placeholder' => 'Une phrase d\'accroche', 'class' => 'bg-dark']
+                'required' =>false,
+                'attr' =>  ['placeholder' => 'Une phrase d\'accroche', 'class' => 'bg-light']
                     ])
             ->add('content', TextareaType::class , [
                 'label' => 'Votre contenu',
+                'required' =>false,
                 'attr' =>  ['placeholder' => 'Dites-nous tout !']
                     ])
-            ->add('Image', UrlType::class , [
+            ->add('Image', TextType::class , [
                 'label' => 'Adresse de l\'image',
+                'required' =>false,
                 'attr' =>  ['placeholder' => 'Collez un lien d\'image']
                     ])
             ->add('Envoyer', SubmitType::class)
